@@ -1,16 +1,16 @@
 package com.classes;
 
 public class Pessoa {
-    
+
     private String cpf;
     private String nome;
-    
+
     public Pessoa() {
     }
 
     public Pessoa(String nome, String cpf) {
         setNome(nome);
-        setcpf(cpf);
+        setCPF(cpf);
     }
 
     public String getNome() {
@@ -23,11 +23,11 @@ public class Pessoa {
         }
     }
 
-    public String getcpf() {
+    public String getCPF() {
         return cpf;
     }
 
-    public void setcpf(String cpf) {
+    public void setCPF(String cpf) {
         if(cpf != null && cpf.length() == 11){
             this.cpf = cpf;
         }
@@ -37,8 +37,8 @@ public class Pessoa {
     public String toString() {
         return "-----------------\nInformações Usuário\nNome: " + nome + "\nCpf: " + cpf;
     }
-    
-    
 
-    
+
+
+
 }
