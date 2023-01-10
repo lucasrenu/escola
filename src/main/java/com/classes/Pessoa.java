@@ -9,8 +9,8 @@ public class Pessoa {
     }
 
     public Pessoa(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
+        setNome(nome);
+        setcpf(cpf);
     }
 
     public String getNome() {
@@ -18,15 +18,19 @@ public class Pessoa {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if(nome != null){
+            this.nome = nome;
+        }
     }
 
     public String getcpf() {
         return cpf;
     }
 
-    public void cpf(String cpf) {
-        this.cpf = cpf;
+    public void setcpf(String cpf) {
+        if(cpf != null && cpf.length() == 11){
+            this.cpf = cpf;
+        }
     }
 
     @Override
