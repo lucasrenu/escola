@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.MenuController">
+<VBox alignment="CENTER" spacing="20.0" minHeight="360" minWidth="360"  xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.MenuController">
    <children>
       <Label text="MENU" />
       <Label fx:id="lblMSG" text="Menbros Ocultos" />
