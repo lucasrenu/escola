@@ -1,9 +1,11 @@
 create database escola;
 use escola;
 create table professor(
-    cpf varchar(11) not null,
-    nome varchar(35) not null,
-    salario numeric(9,2) not null,
-    titulacao varchar(20) not null,
-    especializacao varchar(20) not null,
-    primary key(cpf));
+    id INT NOT NULL AUTO_INCREMENT,
+    cpf VARCHAR(11) NOT NULL,
+    nome VARCHAR(35) NOT NULL,
+    salario NUMERIC(9,2) NOT NULL,
+    titulacao VARCHAR(20) NOT NULL,
+    especializacao VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
+);
