@@ -12,7 +12,6 @@ import com.classes.Professor;
 
 public class ProfessorDAO implements GenericDAO<Professor>{
 
-    @Override
     public Connection getConexao() {
         Connection conexao = null;
         String URL = "jdbc:mariadb://localhost:3306/escola";

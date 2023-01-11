@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.List;
 
 public interface GenericDAO <E>{
-    public Connection getConexao();
     boolean insert(E e);
     public E select(int id);
     public List<E> select();
