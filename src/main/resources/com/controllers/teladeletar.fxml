@@ -34,7 +34,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -49,30 +48,12 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <Label layoutX="264.0" layoutY="25.0" text="Tela de Cadastro">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="299.0" layoutY="57.0" text="Professor">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label layoutX="29.0" layoutY="63.0" text="Nome:" />
-            <Label layoutX="27.0" layoutY="115.0" text="CPF:" />
-            <Label layoutX="28.0" layoutY="168.0" text="Salário:" />
-            <Label layoutX="26.0" layoutY="224.0" text="Especialização:" />
-            <Label layoutX="26.0" layoutY="279.0" text="Titulação" />
-            <TextField fx:id="txNome" layoutX="28.0" layoutY="81.0" promptText="Ex: Raimundo josé" />
-            <TextField fx:id="txCpf" layoutX="28.0" layoutY="133.0" promptText="Ex: 000.000.000-00" />
-            <TextField fx:id="txSalario" layoutX="28.0" layoutY="191.0" promptText="Ex: 2000,00" />
-            <TextField fx:id="txEspecializacao" layoutX="28.0" layoutY="242.0" promptText="Ex: Eng. Software" />
-            <TextField fx:id="txTitulacao" layoutX="28.0" layoutY="305.0" promptText="Ex: Mestrado" />
-            <Button fx:id="btCadastrarProfessor" layoutX="50.0" layoutY="345.0" mnemonicParsing="false" text="Cadastrar" />
-            <TableView layoutX="412.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
-            <Button id="txDeletar" fx:id="btDeletarcd" layoutX="237.0" layoutY="345.0" mnemonicParsing="false" text="Deletar" />
-            <Button fx:id="btPesquisarCadastro" layoutX="399.0" layoutY="345.0" mnemonicParsing="false" text="Pesquisar" />
+            <Label layoutX="274.0" layoutY="31.0" text="Tela Delete" />
+            <Label layoutX="46.0" layoutY="88.0" text="Cpf do professor:" />
+            <TextField id="txCPFdelete" layoutX="46.0" layoutY="126.0" promptText="Ex: 000.000.000-00" />
+            <Button id="btDelete" layoutX="46.0" layoutY="178.0" mnemonicParsing="false" text="Deletar" />
+            <Button id="vtCad" layoutX="27.0" layoutY="292.0" mnemonicParsing="false" text="Voltar a tela de cadastro" />
+            <Button id="vtPesq" layoutX="236.0" layoutY="292.0" mnemonicParsing="false" text="Voltar a pesquisar" />
       </children>
     </AnchorPane>
   </children>
