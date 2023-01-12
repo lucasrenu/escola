@@ -37,23 +37,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
             <Label layoutX="274.0" layoutY="31.0" text="Tela Delete" />
             <Label layoutX="46.0" layoutY="88.0" text="Cpf do professor:" />
-            <TextField id="txCPFdelete" layoutX="46.0" layoutY="126.0" promptText="Ex: 000.000.000-00" />
-            <Button id="btDelete" layoutX="46.0" layoutY="178.0" mnemonicParsing="false" text="Deletar" />
-            <Button id="vtCad" layoutX="27.0" layoutY="292.0" mnemonicParsing="false" text="Voltar a tela de cadastro" />
-            <Button id="vtPesq" layoutX="236.0" layoutY="292.0" mnemonicParsing="false" text="Voltar a pesquisar" />
+            <TextField id="txCPFdelete" fx:id="CpfProf" layoutX="46.0" layoutY="126.0" promptText="Ex: 000.000.000-00" />
+            <Button id="btDelete" fx:id="btDeletar" layoutX="46.0" layoutY="178.0" mnemonicParsing="false" onAction="#deletar" text="Deletar" />
+            <Button id="vtCad" fx:id="btVtcadastro" layoutX="27.0" layoutY="292.0" mnemonicParsing="false" text="Voltar a tela de cadastro" />
+            <Button id="vtPesq" fx:id="btVtPesquisa" layoutX="236.0" layoutY="292.0" mnemonicParsing="false" text="Voltar a pesquisar" />
       </children>
     </AnchorPane>
   </children>
