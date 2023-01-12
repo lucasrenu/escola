@@ -40,15 +40,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.CadastroController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
             <Label layoutX="264.0" layoutY="25.0" text="Tela de Cadastro">
                <font>
                   <Font size="15.0" />
@@ -69,10 +64,10 @@
             <TextField fx:id="txSalario" layoutX="28.0" layoutY="191.0" promptText="Ex: 2000,00" />
             <TextField fx:id="txEspecializacao" layoutX="28.0" layoutY="242.0" promptText="Ex: Eng. Software" />
             <TextField fx:id="txTitulacao" layoutX="28.0" layoutY="305.0" promptText="Ex: Mestrado" />
-            <Button fx:id="btCadastrarProfessor" layoutX="50.0" layoutY="345.0" mnemonicParsing="false" text="Cadastrar" />
+            <Button fx:id="btCadastrarProfessor" layoutX="50.0" layoutY="345.0" mnemonicParsing="false" onAction="#Cadastrar" text="Cadastrar" />
             <TableView layoutX="412.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
-            <Button id="txDeletar" fx:id="btDeletarcd" layoutX="237.0" layoutY="345.0" mnemonicParsing="false" text="Deletar" />
-            <Button fx:id="btPesquisarCadastro" layoutX="399.0" layoutY="345.0" mnemonicParsing="false" text="Pesquisar" />
+            <Button id="txDeletar" fx:id="btDeletarcd" layoutX="237.0" layoutY="345.0" mnemonicParsing="false" onAction="#mudarTelaDeletar" text="Deletar" />
+            <Button fx:id="btPesquisarCadastro" layoutX="399.0" layoutY="345.0" mnemonicParsing="false" onAction="#mudarTelaPesquisa" text="Pesquisar" />
       </children>
     </AnchorPane>
   </children>
