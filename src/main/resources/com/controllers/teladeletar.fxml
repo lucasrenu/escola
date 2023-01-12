@@ -44,10 +44,10 @@
       <children>
             <Label layoutX="274.0" layoutY="31.0" text="Tela Delete" />
             <Label layoutX="46.0" layoutY="88.0" text="Cpf do professor:" />
-            <TextField id="txCPFdelete" fx:id="CpfProf" layoutX="46.0" layoutY="126.0" promptText="Ex: 000.000.000-00" />
-            <Button id="btDelete" fx:id="btDeletar" layoutX="46.0" layoutY="178.0" mnemonicParsing="false" onAction="#deletar" text="Deletar" />
-            <Button id="vtCad" fx:id="btVtcadastro" layoutX="27.0" layoutY="292.0" mnemonicParsing="false" text="Voltar a tela de cadastro" />
-            <Button id="vtPesq" fx:id="btVtPesquisa" layoutX="236.0" layoutY="292.0" mnemonicParsing="false" text="Voltar a pesquisar" />
+            <TextField id="txCPFdelete" layoutX="46.0" layoutY="126.0" promptText="Ex: 000.000.000-00" />
+            <Button id="btDelete" layoutX="46.0" layoutY="178.0" mnemonicParsing="false" onAction="#deletar" text="Deletar" />
+            <Button id="vtCad" layoutX="27.0" layoutY="292.0" mnemonicParsing="false" onAction="#mudarTelaCadastro" text="Voltar a tela de cadastro" />
+            <Button id="vtPesq" layoutX="252.0" layoutY="292.0" mnemonicParsing="false" onAction="#voltarTelaPesquisa" text="Voltar a pesquisar" />
       </children>
     </AnchorPane>
   </children>
