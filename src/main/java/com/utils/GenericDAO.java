@@ -1,6 +1,5 @@
 package com.utils;
 
-import java.sql.Connection;
 import java.util.List;
 
 public interface GenericDAO <E>{

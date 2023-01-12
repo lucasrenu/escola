@@ -6,8 +6,14 @@ public class Professor extends Pessoa{
     private String titulacao;
     private String especializacao;
 
-
     public Professor() {
+    }
+
+    public Professor(int id, String nome, String cpf, double salario, String titulacao, String especializacao) {
+        super(id, cpf, nome);
+        this.salario = salario;
+        this.titulacao = titulacao;
+        this.especializacao = especializacao;
     }
 
     public Professor(String nome, String cpf, double salario, String titulacao, String especializacao) {
@@ -51,6 +57,6 @@ public class Professor extends Pessoa{
     public String toString() {
         return "Professor \nsalario:" + salario + "\ntitulacao: " + titulacao + "\nespecializacao:" + especializacao;
     }
-    
-    
+
+
 }
