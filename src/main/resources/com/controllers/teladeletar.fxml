@@ -43,7 +43,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="274.0" layoutY="31.0" text="Tela Delete" />
-            <Label layoutX="46.0" layoutY="88.0" text="Informe o cpf do professor:" />
+            <Label layoutX="46.0" layoutY="88.0" text="Informe o id do professor:" />
             <TextField id="txCPFdelete" fx:id="cpfProfessor" layoutX="46.0" layoutY="126.0" />
             <Button id="btDelete" layoutX="46.0" layoutY="178.0" mnemonicParsing="false" onAction="#deletar" text="Deletar" />
             <Button id="vtCad" layoutX="27.0" layoutY="292.0" mnemonicParsing="false" onAction="#mudarTelaCadastro" text="Voltar a tela de cadastro" />

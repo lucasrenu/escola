@@ -1,5 +1,9 @@
 package com.controllers;
 
+import java.io.IOException;
+
+import com.classes.Professor;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -22,16 +26,16 @@ public class UpdateController {
 
     @FXML
     void atualizarCadastro() {
-
+        
     }
 
     @FXML
-    void mudarParaCadastro() {
-
+    void mudarParaCadastro() throws IOException {
+        App.setRoot("telacadastro");
     }
 
     @FXML
-    void mudarParaDeletar() {
-
+    void mudarParaDeletar() throws IOException {
+        App.setRoot("teladeletar");
     }
 }

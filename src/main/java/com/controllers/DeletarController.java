@@ -22,4 +22,6 @@ public class DeletarController {
     @FXML void voltarTelaPesquisa() throws IOException {
         App.setRoot("telapesquisa");
     }
+
+
 }
