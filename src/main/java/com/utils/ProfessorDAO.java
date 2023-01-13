@@ -61,6 +61,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             psm.setString(1, cpf);
             return criarProfessor(psm.executeQuery());
         } catch(Exception e) {
+            e.printStackTrace();
             System.out.println("Erro, usuário não encontrado.");
         }
         return null;
