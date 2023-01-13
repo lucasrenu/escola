@@ -122,6 +122,8 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             if(con != null){
                 String sql = "SELECT * FROM professor WHERE cpf = ?";
                 PreparedStatement psm = con.prepareStatement(sql);
+                psm.executeUpdate();
+                return true;
             }
         } catch(Exception e) {
             System.out.println("Erro, usuário não encontrado.");
