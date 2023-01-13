@@ -54,9 +54,10 @@ public class PesquisaController {
 
     @FXML
     void pesquisarPorCpf() {
-        //TODO: tratamento de dados para o caso de o campo estar vazio.
         ProfessorDAO prf = new ProfessorDAO();
+        //TODO: Válidando entrada de dados, tela de pesquisa por cpf;
         Professor prof = prf.selectByCPF(txCpfprofessor.getText());
+
         if ( prof != null ){
             hbDados.setVisible(true);
             lblCpf.setText(prof.getCpf());
@@ -66,11 +67,6 @@ public class PesquisaController {
             lblTitulacao.setText(prof.getTitulacao());
             lblEspecializacao.setText(prof.getEspecializacao());
             txCpfprofessor.setText("");
-            System.out.printf("\n\nProfessor:\n"+
-                "ID: "+ prof.getId()+
-                "\nCPF: " + prof.getCpf()+
-                "\nNome: " + prof.getNome()+
-                "\nTitulação: " + prof.getTitulacao());
         }
     }
 }
