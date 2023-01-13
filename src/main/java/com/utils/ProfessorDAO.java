@@ -138,6 +138,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
                 ps.setInt(1, p.getId());
                 ps.setString(2, p.getCpf());
                 ps.executeUpdate();
+                return true;
             }
         } catch (SQLException e) {
             // TODO: handle exception
