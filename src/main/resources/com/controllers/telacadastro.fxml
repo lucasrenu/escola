@@ -46,11 +46,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-<<<<<<< HEAD
             <Label layoutX="264.0" layoutY="25.0" text="Tela de Cadastro">
-=======
-            <Label layoutX="240.0" layoutY="26.0" text="Tela de Cadastro">
->>>>>>> e4dcb68 (Criada classe PesquisaController)
                <font>
                   <Font size="15.0" />
                </font>
