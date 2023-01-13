@@ -38,25 +38,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.PesquisaController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
             <Label id="title" fx:id="txPesquisa" layoutX="276.0" layoutY="23.0" text="Aba de Pesquisa" />
             <Label fx:id="labelProf" layoutX="60.0" layoutY="74.0" text="Cpf do professor:" />
             <TextField id="txCpfPesquisa" fx:id="txCpfprofessor" layoutX="60.0" layoutY="101.0" promptText="Ex: 000.000.000-00" />
             <TableView id="tbDados" fx:id="tbProfessores" layoutX="392.0" layoutY="91.0" prefHeight="200.0" prefWidth="200.0" />
-            <Button fx:id="btPesquisa" layoutX="60.0" layoutY="146.0" mnemonicParsing="false" text="Pesquisar" />
-            <Button id="btCadastrar" fx:id="btInterCadastrar" layoutX="60.0" layoutY="321.0" mnemonicParsing="false" text="Cadastrar" />
-            <Button id="btPesquisar" fx:id="btInterPesquisar" layoutX="169.0" layoutY="321.0" mnemonicParsing="false" text="Pesquisar" />
-            <Button id="btDeletar" fx:id="btInterDelete" layoutX="292.0" layoutY="321.0" mnemonicParsing="false" text="Deletar" />
+            <Button fx:id="btPesquisa" layoutX="60.0" layoutY="146.0" mnemonicParsing="false" onAction="#pesquisarPorCpf" text="Pesquisar" />
+            <Button id="btCadastrar" layoutX="60.0" layoutY="321.0" mnemonicParsing="false" onAction="#mudarParaCadastro" text="Cadastrar" />
+            <Button id="btPesquisar" layoutX="169.0" layoutY="321.0" mnemonicParsing="false" onAction="#mudarParaPesquisar" text="Pesquisar" />
+            <Button id="btDeletar" layoutX="292.0" layoutY="321.0" mnemonicParsing="false" onAction="#mudarParaDeletar" text="Deletar" />
       </children>
     </AnchorPane>
   </children>
