@@ -50,7 +50,14 @@ public class UpdateController {
         Professor prof;
         int id = Integer.parseInt(txtIdPesquisar.getText());
         prof = dao.select(id);
+
         if(prof != null){
+            System.out.printf("\n\nProfessor:\n"+
+            "ID: "+ prof.getId()+
+            "\nCPF: " + prof.getCpf()+
+            "\nNome: " + prof.getNome()+
+            "\nTitulação: " + prof.getTitulacao());
+
             txtCpf.setText(prof.getCpf());
             txtNome.setText(prof.getNome());
             txtTitulacao.setText(prof.getTitulacao());

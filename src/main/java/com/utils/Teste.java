@@ -11,15 +11,6 @@ public class Teste {
         Professor profs = new Professor(3, "Sávio", "09876543212", 12000, "Mestrado", "Computação");
         Professor prof2 = new Professor("Matheus", "40028922111", 6200, "Graduado", "Inglês");
         // doa.insert(profs);
-        doa.delete(profs);
-
-        List<Professor> prfs = doa.select();
-        for (Professor professor : prfs) {
-            System.out.printf("\n\nProfessor:\n"+
-            "ID: "+ professor.getId()+
-            "\nCPF: " + professor.getCpf()+
-            "\nNome: " + professor.getNome()+
-            "\nTitulação: " + professor.getTitulacao());
-        }
+        doa.select(2);
     }
 }

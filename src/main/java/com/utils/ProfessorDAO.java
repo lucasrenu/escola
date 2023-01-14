@@ -108,10 +108,10 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             if(con!=null){
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setInt(1, id);
-                ps.executeQuery();
+                return criarProfessor(ps.executeQuery());
             }
         } catch (SQLException e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
         return null;
     }
@@ -143,7 +143,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
                 return true;
             }
         } catch (SQLException e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
         return false;
     }
