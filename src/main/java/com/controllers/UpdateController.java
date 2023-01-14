@@ -67,12 +67,6 @@ public class UpdateController {
 
         if(prof != null){
             idProfessor = Integer.parseInt(txtIdPesquisar.getText());
-            System.out.printf("\n\nProfessor:\n"+
-            "ID: "+ prof.getId()+
-            "\nCPF: " + prof.getCpf()+
-            "\nNome: " + prof.getNome()+
-            "\nTitulação: " + prof.getTitulacao());
-
             txtCpf.setText(prof.getCpf());
             txtNome.setText(prof.getNome());
             txtTitulacao.setText(prof.getTitulacao());
