@@ -7,6 +7,7 @@ import com.utils.ProfessorDAO;
 import javafx.scene.control.TextField;
 
 public class UpdateController {
+    private int idProfessor;
     @FXML
     private TextField txtIdPesquisar;
 
@@ -41,7 +42,20 @@ public class UpdateController {
 
     @FXML
     void atualizarCadastro() {
+        ProfessorDAO dao = new ProfessorDAO();
+        //TODO: Fazer validação dos campos;
 
+        Professor prof = new Professor();
+        prof.setId(idProfessor);
+        prof.setCpf(txtCpf.getText());
+        prof.setNome(txtNome.getText());
+        prof.setTitulacao(txtTitulacao.getText());
+        prof.setEspecializacao(txtEspecializacao.getText());
+        prof.setSalario(Double.parseDouble(txtSalario.getText()));
+
+        if(dao.update(prof)){
+            System.out.println("Atualização bem sucedida!");
+        }
     }
 
     @FXML
@@ -52,6 +66,7 @@ public class UpdateController {
         prof = dao.select(id);
 
         if(prof != null){
+            idProfessor = Integer.parseInt(txtIdPesquisar.getText());
             System.out.printf("\n\nProfessor:\n"+
             "ID: "+ prof.getId()+
             "\nCPF: " + prof.getCpf()+
