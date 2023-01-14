@@ -14,7 +14,6 @@ public class Teste {
         doa.delete(profs);
 
         List<Professor> prfs = doa.select();
-
         for (Professor professor : prfs) {
             System.out.printf("\n\nProfessor:\n"+
             "ID: "+ professor.getId()+

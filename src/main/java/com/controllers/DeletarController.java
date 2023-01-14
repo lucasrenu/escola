@@ -12,7 +12,7 @@ public class DeletarController {
 
     @FXML void deletar() {
         ProfessorDAO professor = new ProfessorDAO();
-        professor.delete(Integer.parseInt(cpfProfessor.getText())); 
+        professor.delete(Integer.parseInt(cpfProfessor.getText()));
     }
 
     @FXML void mudarTelaCadastro() throws IOException {
@@ -23,5 +23,8 @@ public class DeletarController {
         App.setRoot("telapesquisa");
     }
 
-
+    @FXML
+    void mudarTelaUpgrade() throws IOException {
+        App.setRoot("update");
+    }
 }

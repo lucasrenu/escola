@@ -69,4 +69,9 @@ public class PesquisaController {
             txCpfprofessor.setText("");
         }
     }
+
+    @FXML
+    void mudarTelaUpgrade() throws IOException {
+        App.setRoot("update");
+    }
 }

@@ -59,5 +59,9 @@ public class CadastroController {
     void mudarTelaPesquisa() throws IOException {
         App.setRoot("telapesquisa");
     }
-}
 
+    @FXML
+    void mudarTelaUpgrade() throws IOException {
+        App.setRoot("update");
+    }
+}

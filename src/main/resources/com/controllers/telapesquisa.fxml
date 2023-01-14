@@ -52,8 +52,7 @@
             <Label fx:id="labelProf" layoutX="60.0" layoutY="74.0" text="Cpf do professor:" />
             <TextField id="txCpfPesquisa" fx:id="txCpfprofessor" layoutX="60.0" layoutY="101.0" promptText="Ex: 000.000.000-00" />
             <Button fx:id="btPesquisa" layoutX="60.0" layoutY="146.0" mnemonicParsing="false" onAction="#pesquisarPorCpf" text="Pesquisar" />
-            <Button id="btCadastrar" layoutX="60.0" layoutY="321.0" mnemonicParsing="false" onAction="#mudarParaCadastro" text="Cadastrar" />
-            <Button id="btDeletar" layoutX="172.0" layoutY="321.0" mnemonicParsing="false" onAction="#mudarParaDeletar" text="Deletar" />
+            <Button id="btDeletar" layoutX="146.0" layoutY="321.0" mnemonicParsing="false" onAction="#mudarParaDeletar" text="Deletar" />
             <Label alignment="CENTER" layoutX="320.0" layoutY="67.0" prefHeight="31.0" prefWidth="157.0" text="Dados Do Professor" />
             <HBox fx:id="hbDados" layoutX="278.0" layoutY="111.0" prefHeight="187.0" prefWidth="328.0" visible="false">
                <children>
@@ -95,6 +94,8 @@
                   </VBox>
                </children>
             </HBox>
+            <Button id="btCadastrar" layoutX="27.0" layoutY="321.0" mnemonicParsing="false" onAction="#mudarParaCadastro" text="Cadastrar" />
+            <Button layoutX="240.0" layoutY="321.0" mnemonicParsing="false" onAction="#mudarTelaUpgrade" text="Atualizar" />
       </children>
     </AnchorPane>
   </children>
