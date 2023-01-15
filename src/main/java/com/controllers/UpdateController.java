@@ -6,8 +6,9 @@ import com.classes.Professor;
 import com.utils.ProfessorDAO;
 import javafx.scene.control.TextField;
 
-public class UpdateController {
+public class UpdateController extends BaseController{
     private int idProfessor;
+
     @FXML
     private TextField txtIdPesquisar;
 
@@ -31,15 +32,6 @@ public class UpdateController {
         App.setRoot("telacadastro");
     }
 
-    @FXML void voltarTelaPesquisa() throws IOException {
-        App.setRoot("telapesquisa");
-    }
-
-    @FXML
-    void mudarParaDeletar() throws IOException {
-        App.setRoot("teladeletar");
-    }
-
     @FXML
     void atualizarCadastro() {
         ProfessorDAO dao = new ProfessorDAO();
@@ -55,6 +47,13 @@ public class UpdateController {
 
         if(dao.update(prof)){
             System.out.println("Atualização bem sucedida!");
+            txtCpf.setText("");
+            txtNome.setText("");
+            txtSalario.setText("");
+            txtTitulacao.setText("");
+            txtEspecializacao.setText("");
+        } else {
+            System.out.println("Erro na atualização!");
         }
     }
 
@@ -73,5 +72,6 @@ public class UpdateController {
             txtSalario.setText(""+prof.getSalario());
             txtEspecializacao.setText(prof.getEspecializacao());
         }
+        txtIdPesquisar.setText("");
     }
 }

@@ -38,11 +38,12 @@
             </VBox>
          </children>
       </HBox>
-      <Button layoutX="262.0" layoutY="328.0" mnemonicParsing="false" onAction="#atualizarCadastro" text="Atualizar" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mudarParaDeletar" text="Deletar" />
-      <Button layoutX="495.0" layoutY="14.0" mnemonicParsing="false" onAction="#mudarParaCadastro" text="Cadastrar" />
+      <Button layoutX="414.0" layoutY="14.0" mnemonicParsing="false" onAction="#mudarTelaPesquisa" text="Pesquisar" />
+      <Button layoutX="262.0" layoutY="333.0" mnemonicParsing="false" onAction="#atualizarCadastro" text="Atualizar" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mudarTelaDeletar" text="Deletar" />
+      <Button layoutX="504.0" layoutY="14.0" mnemonicParsing="false" onAction="#mudarParaCadastro" text="Cadastrar" />
       <TextField fx:id="txtIdPesquisar" layoutX="467.0" layoutY="163.0" prefHeight="24.0" prefWidth="110.0" />
-      <Button layoutX="482.0" layoutY="193.0" mnemonicParsing="false" onAction="#selecionarProfessor" text="Pesquisar" />
+      <Button layoutX="482.0" layoutY="193.0" mnemonicParsing="false" onAction="#selecionarProfessor" text="Selecionar" />
       <Label layoutX="472.0" layoutY="134.0" prefHeight="29.0" prefWidth="101.0" text="PROFESSOR ID" />
    </children>
 </AnchorPane>

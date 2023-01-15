@@ -7,7 +7,7 @@ import com.utils.ProfessorDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class DeletarController {
+public class DeletarController extends BaseController{
     @FXML private TextField cpfProfessor;
 
     @FXML void deletar() {

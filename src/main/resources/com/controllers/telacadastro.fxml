@@ -66,11 +66,11 @@
             <TextField fx:id="txEspecializacao" layoutX="28.0" layoutY="242.0" promptText="Ex: Eng. Software" />
             <TextField fx:id="txTitulacao" layoutX="28.0" layoutY="305.0" promptText="Ex: Mestrado" />
             <Button fx:id="btCadastrarProfessor" layoutX="63.0" layoutY="339.0" mnemonicParsing="false" onAction="#Cadastrar" text="Cadastrar" />
-            <TableView layoutX="346.0" layoutY="77.0" prefHeight="254.0" prefWidth="264.0">
+            <TableView layoutX="270.0" layoutY="77.0" prefHeight="254.0" prefWidth="340.0">
                <columns>
                   <TableColumn prefWidth="36.0" text="ID" />
-                  <TableColumn prefWidth="156.0" text="NOME" />
-                  <TableColumn prefWidth="58.0" text="CPF" />
+                  <TableColumn prefWidth="185.0" text="NOME" />
+                  <TableColumn prefWidth="118.0" text="CPF" />
                </columns>
             </TableView>
             <Button id="txDeletar" fx:id="btDeletarcd" layoutX="245.0" layoutY="363.0" mnemonicParsing="false" onAction="#mudarTelaDeletar" text="Deletar" />
