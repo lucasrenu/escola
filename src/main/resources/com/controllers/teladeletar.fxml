@@ -46,8 +46,9 @@
             <Label layoutX="46.0" layoutY="88.0" text="Informe o id do professor:" />
             <TextField id="txCPFdelete" fx:id="cpfProfessor" layoutX="46.0" layoutY="126.0" />
             <Button id="btDelete" layoutX="46.0" layoutY="178.0" mnemonicParsing="false" onAction="#deletar" text="Deletar" />
-            <Button id="vtCad" layoutX="27.0" layoutY="292.0" mnemonicParsing="false" onAction="#mudarTelaCadastro" text="Voltar a tela de cadastro" />
-            <Button id="vtPesq" layoutX="252.0" layoutY="292.0" mnemonicParsing="false" onAction="#voltarTelaPesquisa" text="Voltar a pesquisar" />
+            <Button id="vtCad" layoutX="24.0" layoutY="304.0" mnemonicParsing="false" onAction="#mudarTelaCadastro" text="Voltar a tela de cadastro" />
+            <Button id="vtPesq" layoutX="252.0" layoutY="304.0" mnemonicParsing="false" onAction="#voltarTelaPesquisa" text="Voltar a pesquisar" />
+            <Button layoutX="477.0" layoutY="304.0" mnemonicParsing="false" onAction="#mudarTelaUpgrade" text="Atualizar" />
       </children>
     </AnchorPane>
   </children>

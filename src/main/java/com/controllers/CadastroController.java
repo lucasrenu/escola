@@ -1,8 +1,5 @@
 package com.controllers;
 
-import java.io.IOException;
-
-
 import com.classes.Professor;
 import com.utils.ProfessorDAO;
 
@@ -11,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class CadastroController {
+public class CadastroController extends BaseController{
     @FXML private Button btCadastrarProfessor;
 
     @FXML private Button btDeletarcd;
@@ -37,10 +34,11 @@ public class CadastroController {
             professorAt.setEspecializacao(txEspecializacao.getText());
             professorAt.setNome(txNome.getText());
             professorAt.setSalario(Double.parseDouble(txSalario.getText()));
-            professorAt.setTitulacao(txTitulacao.getText());   
+            professorAt.setTitulacao(txTitulacao.getText());
         }
 
         
+
         // !nome.trim().isEmpty()
         txCpf.setText("");
         txEspecializacao.setText("");
@@ -49,15 +47,4 @@ public class CadastroController {
         ProfessorDAO professor  = new ProfessorDAO();
         professor.insert(professorAt);
     }
-
-    @FXML
-    void mudarTelaDeletar() throws IOException {
-        App.setRoot("teladeletar");
-    }
-
-    @FXML
-    void mudarTelaPesquisa() throws IOException {
-        App.setRoot("telapesquisa");
-    }
 }
-

@@ -108,10 +108,10 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             if(con!=null){
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setInt(1, id);
-                ps.executeQuery();
+                return criarProfessor(ps.executeQuery());
             }
         } catch (SQLException e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
         return null;
     }
@@ -120,13 +120,20 @@ public class ProfessorDAO implements GenericDAO<Professor>{
     public boolean update(Professor p) {
         try(Connection con = getConexao()){
             if(con != null){
-                String sql = "SELECT * FROM professor WHERE cpf = ?";
+                String sql = "UPDATE professor SET cpf = ?, nome = ?, salario = ?, titulacao = ?, especializacao = ? WHERE id = ?";
                 PreparedStatement psm = con.prepareStatement(sql);
+                psm.setString(1, p.getCpf());
+                psm.setString(2, p.getNome());
+                psm.setDouble(3, p.getSalario());
+                psm.setString(4, p.getTitulacao());
+                psm.setString(5, p.getEspecializacao());
+                psm.setInt(6, p.getId());
                 psm.executeUpdate();
                 return true;
             }
         } catch(Exception e) {
             System.out.println("Erro, usuário não encontrado.");
+            e.printStackTrace();
         }
         return false;
     }
@@ -143,7 +150,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
                 return true;
             }
         } catch (SQLException e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
         return false;
     }
