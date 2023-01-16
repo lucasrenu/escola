@@ -1,19 +1,37 @@
 package com.controllers;
 
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
 import com.classes.Professor;
 import com.utils.ProfessorDAO;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableView;
+import javafx.collections.FXCollections;
+import javafx.scene.control.TableColumn;
+import javafx.collections.ObservableList;
 
-public class CadastroController extends BaseController{
-    @FXML private Button btCadastrarProfessor;
+public class CadastroController extends BaseController implements Initializable{
 
-    @FXML private Button btDeletarcd;
+    private ProfessorDAO dao = new ProfessorDAO();
 
-    @FXML private Button btPesquisarCadastro;
+    @FXML
+    private TableView<Professor> tblProfessores;
+
+    @FXML
+    private TableColumn<Professor, String> clCpf;
+
+    @FXML
+    private TableColumn<Professor, Integer> clId;
+
+    @FXML
+    private TableColumn<Professor, String> clName;
 
     @FXML private TextField txCpf;
 
@@ -28,13 +46,13 @@ public class CadastroController extends BaseController{
     @FXML private Label msg;
 
     @FXML void Cadastrar() {
-        Professor professorAt = new Professor();
+        Professor prof = new Professor();
         if(txCpf.getText() != null && !txCpf.getText().trim().isEmpty() &&  txEspecializacao.getText() != null && !txEspecializacao.getText().trim().isEmpty() && txNome.getText() != null && !txNome.getText().trim().isEmpty() && txSalario.getText() != null && !txSalario.getText().trim().isEmpty() && txTitulacao.getText() != null && !txTitulacao.getText().trim().isEmpty()){
-            professorAt.setCpf(txCpf.getText());
-            professorAt.setEspecializacao(txEspecializacao.getText());
-            professorAt.setNome(txNome.getText());
-            professorAt.setSalario(Double.parseDouble(txSalario.getText()));
-            professorAt.setTitulacao(txTitulacao.getText());
+            prof.setCpf(txCpf.getText());
+            prof.setEspecializacao(txEspecializacao.getText());
+            prof.setNome(txNome.getText());
+            prof.setSalario(Double.parseDouble(txSalario.getText()));
+            prof.setTitulacao(txTitulacao.getText());
         }
 
         
@@ -44,7 +62,22 @@ public class CadastroController extends BaseController{
         txEspecializacao.setText("");
         txNome.setText("");
         txTitulacao.setText("");
-        ProfessorDAO professor  = new ProfessorDAO();
-        professor.insert(professorAt);
+        txSalario.setText("");
+
+        dao.insert(prof);
+        initialize(null, null);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        clId.setCellValueFactory(new PropertyValueFactory<Professor, Integer>("id"));
+        clName.setCellValueFactory(new PropertyValueFactory<Professor, String>("nome"));
+        clCpf.setCellValueFactory(new PropertyValueFactory<Professor, String>("cpf"));
+        tblProfessores.setItems(carregarProfessores());
+    }
+
+    private ObservableList carregarProfessores() {
+        List<Professor> profs = dao.select();
+        return FXCollections.observableArrayList(profs);
     }
 }

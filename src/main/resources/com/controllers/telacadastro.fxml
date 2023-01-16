@@ -65,16 +65,16 @@
             <TextField fx:id="txSalario" layoutX="28.0" layoutY="191.0" promptText="Ex: 2000,00" />
             <TextField fx:id="txEspecializacao" layoutX="28.0" layoutY="242.0" promptText="Ex: Eng. Software" />
             <TextField fx:id="txTitulacao" layoutX="28.0" layoutY="305.0" promptText="Ex: Mestrado" />
-            <Button fx:id="btCadastrarProfessor" layoutX="63.0" layoutY="339.0" mnemonicParsing="false" onAction="#Cadastrar" text="Cadastrar" />
-            <TableView layoutX="270.0" layoutY="77.0" prefHeight="254.0" prefWidth="340.0">
+            <Button layoutX="63.0" layoutY="339.0" mnemonicParsing="false" onAction="#Cadastrar" text="Cadastrar" />
+            <TableView fx:id="tblProfessores" layoutX="270.0" layoutY="77.0" prefHeight="254.0" prefWidth="340.0">
                <columns>
-                  <TableColumn prefWidth="36.0" text="ID" />
-                  <TableColumn prefWidth="185.0" text="NOME" />
-                  <TableColumn prefWidth="118.0" text="CPF" />
+                  <TableColumn fx:id="clId" prefWidth="36.0" text="ID" />
+                  <TableColumn fx:id="clName" prefWidth="185.0" text="NOME" />
+                  <TableColumn fx:id="clCpf" prefWidth="118.0" text="CPF" />
                </columns>
             </TableView>
-            <Button id="txDeletar" fx:id="btDeletarcd" layoutX="245.0" layoutY="363.0" mnemonicParsing="false" onAction="#mudarTelaDeletar" text="Deletar" />
-            <Button fx:id="btPesquisarCadastro" layoutX="359.0" layoutY="363.0" mnemonicParsing="false" onAction="#mudarTelaPesquisa" text="Pesquisar" />
+            <Button id="txDeletar" layoutX="245.0" layoutY="363.0" mnemonicParsing="false" onAction="#mudarTelaDeletar" text="Deletar" />
+            <Button layoutX="359.0" layoutY="363.0" mnemonicParsing="false" onAction="#mudarTelaPesquisa" text="Pesquisar" />
             <Button layoutX="459.0" layoutY="363.0" mnemonicParsing="false" onAction="#mudarTelaUpgrade" text="Atualizar" />
       </children>
     </AnchorPane>
