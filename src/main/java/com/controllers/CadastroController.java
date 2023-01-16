@@ -40,7 +40,7 @@ public class CadastroController {
             professorAt.setTitulacao(txTitulacao.getText());   
         }
 
-
+        
         // !nome.trim().isEmpty()
         txCpf.setText("");
         txEspecializacao.setText("");
