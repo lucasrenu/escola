@@ -70,7 +70,8 @@ public class BaseController implements Initializable{
 
     @FXML private TextField txTitulacao;
 
-    @FXML void cadastrar() {
+    @FXML
+    void cadastrar() {
         Professor prof = new Professor();
         if(txCpf.getText() != null && !txCpf.getText().trim().isEmpty() &&  txEspecializacao.getText() != null && !txEspecializacao.getText().trim().isEmpty() && txNome.getText() != null && !txNome.getText().trim().isEmpty() && txSalario.getText() != null && !txSalario.getText().trim().isEmpty() && txTitulacao.getText() != null && !txTitulacao.getText().trim().isEmpty()){
             prof.setCpf(txCpf.getText());
@@ -78,6 +79,15 @@ public class BaseController implements Initializable{
             prof.setNome(txNome.getText());
             prof.setSalario(Double.parseDouble(txSalario.getText()));
             prof.setTitulacao(txTitulacao.getText());
+            txCpf.setText("");
+            txEspecializacao.setText("");
+            txNome.setText("");
+            txTitulacao.setText("");
+            txSalario.setText("");
+            dao.insert(prof);
+            initialize(null, null);
+        } else {
+            System.out.println("Não foi possível efetuar o cadastro!");
         }
     }
 
@@ -259,8 +269,6 @@ public class BaseController implements Initializable{
 
             profsListagemTb.setItems(carregarProfessores());
         }
-        // else if (tabAtual.equals("listagem")){
-        // }
     }
 
     private ObservableList carregarProfessores() {
