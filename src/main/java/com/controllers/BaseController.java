@@ -2,7 +2,9 @@ package com.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.classes.Professor;
@@ -12,12 +14,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
@@ -47,6 +52,9 @@ public class BaseController implements Initializable{
 
     // TELA DE CADASTRO
     private ProfessorDAO dao = new ProfessorDAO();
+
+    @FXML
+    private Alert alert;
 
     @FXML
     private TableView<Professor> tblProfessores;
@@ -87,10 +95,13 @@ public class BaseController implements Initializable{
             dao.insert(prof);
             initialize(null, null);
         } else {
-            System.out.println("Não foi possível efetuar o cadastro!");
+            alert = new Alert(AlertType.ERROR);
+            alert.setTitle("CAMPOS INVÁLIDOS");
+            alert.setHeaderText("Não foi possível efetuar o cadastro!");
+            alert.setContentText("Certifique-se de que todos os campos estão preenchidos.");
+            alert.show();
         }
     }
-
 
     // TELA DE ATUALIZAÇÃO
     private int idProfessor;
@@ -112,11 +123,6 @@ public class BaseController implements Initializable{
 
     @FXML
     private TextField txtTitulacao;
-
-    // @FXML
-    // void mudarParaCadastro() throws IOException {
-    //     App.setRoot("telacadastro");
-    // }
 
     @FXML
     private Button btnAtualizar;
@@ -141,7 +147,7 @@ public class BaseController implements Initializable{
             txtSalario.setText("");
             txtTitulacao.setText("");
             txtEspecializacao.setText("");
-            desabilitarAtualizacao();
+            enableDesable(true);
         } else {
             System.out.println("Erro na atualização!");
         }
@@ -152,54 +158,74 @@ public class BaseController implements Initializable{
     void selecionarProfessor(){
         ProfessorDAO dao = new ProfessorDAO();
         Professor prof;
-        int id = Integer.parseInt(txtIdPesquisar.getText());
-        prof = dao.select(id);
-        habilitarAtualizacao();
+        try {
+            int id = Integer.parseInt(txtIdPesquisar.getText());
+            prof = dao.select(id);
+            if(prof != null){
+                idProfessor = Integer.parseInt(txtIdPesquisar.getText());
+                txtCpf.setText(prof.getCpf());
+                txtNome.setText(prof.getNome());
+                txtTitulacao.setText(prof.getTitulacao());
+                txtSalario.setText(""+prof.getSalario());
+                txtEspecializacao.setText(prof.getEspecializacao());
+                enableDesable(false);
+            } else {
 
-        if(prof != null){
-            idProfessor = Integer.parseInt(txtIdPesquisar.getText());
-            txtCpf.setText(prof.getCpf());
-            txtNome.setText(prof.getNome());
-            txtTitulacao.setText(prof.getTitulacao());
-            txtSalario.setText(""+prof.getSalario());
-            txtEspecializacao.setText(prof.getEspecializacao());
+            }
+        } catch (NumberFormatException n){
+            alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("ID INVÁLIDO!");
+            alert.setHeaderText("Não foi possível Encontrar professor com ID informado!");
+            alert.setContentText("Certifique-se de que o ID informado encontra-se cadastrado no sistema e que o campo esteja corretamente preenchido.");
+            alert.show();
         }
         txtIdPesquisar.setText("");
     }
 
-    private void desabilitarAtualizacao() {
-        txtCpf.setDisable(true);
-        txtNome.setDisable(true);
-        txtSalario.setDisable(true);
-        txtTitulacao.setDisable(true);
-        txtEspecializacao.setDisable(true);
-        btnAtualizar.setDisable(true);
-    }
-
-    private void habilitarAtualizacao() {
-        txtCpf.setDisable(false);
-        txtNome.setDisable(false);
-        txtSalario.setDisable(false);
-        txtTitulacao.setDisable(false);
-        txtEspecializacao.setDisable(false);
-        btnAtualizar.setDisable(false);
+    private void enableDesable(boolean status) {
+        txtCpf.setDisable(status);
+        txtNome.setDisable(status);
+        txtSalario.setDisable(status);
+        txtTitulacao.setDisable(status);
+        txtEspecializacao.setDisable(status);
+        btnAtualizar.setDisable(status);
     }
 
     // TELA DE DELEÇÃO
     @FXML private TextField cpfProfessor;
 
-    @FXML void deletar() {
-        ProfessorDAO professor = new ProfessorDAO();
-        professor.delete(Integer.parseInt(cpfProfessor.getText()));
+    @FXML
+    void deletar() {
+        ProfessorDAO dao = new ProfessorDAO();
+        int id = 0;
+        try {
+            id = Integer.parseInt(cpfProfessor.getText());
+        } catch (NumberFormatException e) {
+            alert = new Alert(AlertType.ERROR);
+            alert.setTitle("ID INVÁLIDO!");
+            alert.setHeaderText("ID não corresponde a um professor!");
+            alert.setContentText("Certifique-se de que o ID informado encontra-se cadastrado no sistema e que o campo esteja corretamente preenchido.");
+            alert.show();
+        }
+        alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("DELEÇÃO!");
+        alert.setHeaderText("Deseja realmente deletar o professor? ");
+        alert.setContentText("Todos os dados serão apagados sem opção de recuperação.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.get() == ButtonType.OK){
+            if(!dao.delete(id)){
+                alert = new Alert(AlertType.ERROR);
+                alert.setTitle("ID INVÁLIDO!");
+                alert.setHeaderText("ID não corresponde a um professor!");
+                alert.setContentText("Certifique-se de que o ID informado encontra-se cadastrado no sistema e que o campo esteja corretamente preenchido.");
+                alert.show();
+            }
+        }
+        reList();
     }
 
     @FXML
-    void goCadastro(){
-        initialize(null, null);
-    }
-
-    @FXML
-    void goListagem(){
+    void reList(){
         initialize(null, null);
     }
 

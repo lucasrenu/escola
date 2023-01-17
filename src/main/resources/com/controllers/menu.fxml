@@ -18,7 +18,7 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
       </content>
     </Tab>
-    <Tab id="cadastro" onSelectionChanged="#goCadastro" text=" CADASTRO  ">
+    <Tab id="cadastro" onSelectionChanged="#reList" text=" CADASTRO  ">
          <content>
             <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
                <children>
@@ -87,11 +87,11 @@
             </AnchorPane>
         </content>
       </Tab>
-      <Tab id="listagem" onSelectionChanged="#goListagem" text=" LISTAGEM ">
+      <Tab id="listagem" onSelectionChanged="#reList" text=" LISTAGEM ">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="profsListagemTb" layoutX="14.0" layoutY="14.0" prefHeight="339.0" prefWidth="570.0">
+                  <TableView fx:id="profsListagemTb" layoutX="30.0" layoutY="16.0" prefHeight="339.0" prefWidth="570.0">
                     <columns>
                       <TableColumn fx:id="idCol" prefWidth="41.0" text="ID" />
                       <TableColumn fx:id="nomeCol" prefWidth="152.0" text="NOME" />

@@ -21,11 +21,9 @@ public class ProfessorDAO implements GenericDAO<Professor>{
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             conexao = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Conexão estabelecida!");
-            return conexao;
+            // return conexao;
         } catch(ClassNotFoundException | SQLException e){
             System.out.println("Não foi possível estabelecer a conexão!");
-            e.printStackTrace();
         }
         return conexao;
 
@@ -43,6 +41,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             pstm.setString(4, p.getTitulacao());
             pstm.setString(5, p.getEspecializacao());
             pstm.executeUpdate();
+            con.close();
             return true;
 
         } catch (Exception o) {
@@ -61,7 +60,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             psm.setString(1, cpf);
             return criarProfessor(psm.executeQuery());
         } catch(Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
             System.out.println("Erro, usuário não encontrado.");
         }
         return null;
@@ -79,7 +78,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             }
         } catch (Exception e) {
             System.out.println("Erro ao selecionar lista de professores");
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return null;
     }
@@ -92,11 +91,12 @@ public class ProfessorDAO implements GenericDAO<Professor>{
                 PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
                 List<Professor> professores = gerarLista(rs);
+                con.close();
                 return professores;
             }
         } catch (Exception e) {
             System.out.println("Erro ao selecionar lista de professores");
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return null;
     }
@@ -111,7 +111,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
                 return criarProfessor(ps.executeQuery());
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Erro ao tentar efetuar seleção pelo ID!");
         }
         return null;
     }
@@ -129,11 +129,12 @@ public class ProfessorDAO implements GenericDAO<Professor>{
                 psm.setString(5, p.getEspecializacao());
                 psm.setInt(6, p.getId());
                 psm.executeUpdate();
+                con.close();
                 return true;
             }
         } catch(Exception e) {
             System.out.println("Erro, usuário não encontrado.");
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return false;
     }
@@ -147,10 +148,12 @@ public class ProfessorDAO implements GenericDAO<Professor>{
                 ps.setInt(1, p.getId());
                 ps.setString(2, p.getCpf());
                 ps.executeUpdate();
+                con.close();
                 return true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Erro ao tentar deletar professor!");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -165,7 +168,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
                 return ps.execute();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+           System.out.println("Erro, impossível deletar usuário, ID não encontrado!");
         }
         return false;
     }
@@ -202,7 +205,8 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             prof.setEspecializacao(rs.getString("especializacao"));
             return prof;
         } catch(SQLException e){
-            e.printStackTrace();
+            System.out.println("Erro ao gerrar lista de professores; ProfessorDAO.criarProfessor");
+            // e.printStackTrace();
         }
         return null;
     }
