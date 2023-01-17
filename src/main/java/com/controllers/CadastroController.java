@@ -45,7 +45,7 @@ public class CadastroController extends BaseController implements Initializable{
 
     @FXML private Label msg;
 
-    @FXML void Cadastrar() {
+    @FXML void cadastrar() {
         Professor prof = new Professor();
         if(txCpf.getText() != null && !txCpf.getText().trim().isEmpty() &&  txEspecializacao.getText() != null && !txEspecializacao.getText().trim().isEmpty() && txNome.getText() != null && !txNome.getText().trim().isEmpty() && txSalario.getText() != null && !txSalario.getText().trim().isEmpty() && txTitulacao.getText() != null && !txTitulacao.getText().trim().isEmpty()){
             prof.setCpf(txCpf.getText());
@@ -54,16 +54,12 @@ public class CadastroController extends BaseController implements Initializable{
             prof.setSalario(Double.parseDouble(txSalario.getText()));
             prof.setTitulacao(txTitulacao.getText());
         }
-
-        
-
         // !nome.trim().isEmpty()
         txCpf.setText("");
         txEspecializacao.setText("");
         txNome.setText("");
         txTitulacao.setText("");
         txSalario.setText("");
-
         dao.insert(prof);
         initialize(null, null);
     }
