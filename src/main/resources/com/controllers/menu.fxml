@@ -2,20 +2,36 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <TabPane fx:id="tbPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.BaseController">
   <tabs>
     <Tab id="menu" text=" MENU ">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Pane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="472.0" fitWidth="668.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../.local/share/wallpaper/wallpaperflare.com_wallpaper%20(1).jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children></AnchorPane>
       </content>
     </Tab>
     <Tab id="cadastro" onSelectionChanged="#reList" text=" CADASTRO  ">
@@ -91,10 +107,10 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="profsListagemTb" layoutX="30.0" layoutY="16.0" prefHeight="339.0" prefWidth="570.0">
+                  <TableView fx:id="profsListagemTb" layoutX="15.0" layoutY="15.0" prefHeight="358.0" prefWidth="618.0">
                     <columns>
-                      <TableColumn fx:id="idCol" prefWidth="41.0" text="ID" />
-                      <TableColumn fx:id="nomeCol" prefWidth="152.0" text="NOME" />
+                      <TableColumn fx:id="idCol" prefWidth="45.0" text="ID" />
+                      <TableColumn fx:id="nomeCol" prefWidth="163.0" text="NOME" />
                         <TableColumn fx:id="colTitulacao" prefWidth="90.0" text="TITULAÇAO" />
                         <TableColumn fx:id="colSalario" prefWidth="78.0" text="SALARIO" />
                         <TableColumn fx:id="cpfCol" minWidth="0.0" prefWidth="76.0" text="CPF" />
@@ -119,13 +135,58 @@
             </AnchorPane>
         </content>
       </Tab>
-      <Tab text="L ESPECIFICA">
+      <Tab text=" PESQUISA ">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="labelProf" layoutX="161.0" layoutY="121.0" text="Cpf do professor:" />
-                  <TextField id="txCpfPesquisa" fx:id="txCpfprofessor" layoutX="161.0" layoutY="144.0" promptText="Ex: 000.000.000-00" />
-                  <Button fx:id="btPesquisa" layoutX="74.0" layoutY="144.0" mnemonicParsing="false" onAction="#pesquisarPorCpf" text="Pesquisar" />
+                  <Label fx:id="labelProf" layoutX="39.0" layoutY="55.0" text="CPF DO PROFESSOR:" />
+                  <TextField id="txCpfPesquisa" fx:id="txCpfprofessor" layoutX="39.0" layoutY="84.0" promptText="Ex: 000.000.000-00" />
+                  <Button fx:id="btPesquisa" layoutX="39.0" layoutY="135.0" mnemonicParsing="false" onAction="#pesquisarPorCpf" text="Pesquisar" />
+                  <HBox fx:id="hbDados" layoutX="245.0" layoutY="28.0" prefHeight="187.0" prefWidth="328.0" visible="false">
+                     <children>
+                        <VBox alignment="TOP_RIGHT" prefHeight="187.0" prefWidth="118.0">
+                           <children>
+                              <Label prefHeight="31.0" prefWidth="110.0" text="Nome: ">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="113.0" text="CPF: ">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="41.0" prefHeight="31.0" prefWidth="110.0" text="Salário:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="111.0" text="Titulação:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="103.0" prefHeight="31.0" prefWidth="112.0" text="Especialização: " />
+                              <Label layoutX="10.0" layoutY="134.0" prefHeight="31.0" prefWidth="110.0" text="ID:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="187.0" prefWidth="226.0">
+                           <children>
+                              <Label fx:id="lblNome" prefHeight="31.0" prefWidth="269.0" />
+                              <Label fx:id="lblCpf" contentDisplay="RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="249.0" />
+                              <Label fx:id="lblSalario" layoutX="10.0" layoutY="41.0" prefHeight="31.0" prefWidth="255.0" />
+                              <Label fx:id="lblTitulacao" layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="235.0" />
+                              <Label fx:id="lblEspecializacao" layoutX="10.0" layoutY="103.0" prefHeight="31.0" prefWidth="236.0" />
+                              <Label fx:id="lblId" layoutX="10.0" layoutY="134.0" prefHeight="31.0" prefWidth="233.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
         </content>
