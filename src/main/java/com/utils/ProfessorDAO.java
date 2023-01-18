@@ -44,7 +44,6 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             return true;
 
         } catch (Exception o) {
-            o.printStackTrace();
             System.out.println("Não foi possível efetua a inserção!");
         }
 
