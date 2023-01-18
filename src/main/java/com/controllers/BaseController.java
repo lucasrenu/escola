@@ -2,7 +2,6 @@ package com.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -27,29 +26,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
 public class BaseController implements Initializable{
-    @FXML
-    void mudarTelaDeletar() throws IOException {
-        App.setRoot("teladeletar");
-    }
-
-    @FXML
-    void mudarTelaPesquisa() throws IOException {
-        App.setRoot("telapesquisa");
-    }
-
-    @FXML
-    void mudarTelaUpgrade() throws IOException {
-        App.setRoot("update");
-    }
-
-    @FXML
-    void mudarParaCadastro() throws IOException {
-        App.setRoot("telacadastro");
-    }
-
-
-// NOVO MODELO
-
     // TELA DE CADASTRO
     private ProfessorDAO dao = new ProfessorDAO();
 
