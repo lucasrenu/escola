@@ -16,19 +16,12 @@
 
 <TabPane fx:id="tbPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.BaseController">
   <tabs>
-    <Tab id="menu" text=" MENU ">
+    <Tab id="menu" text="TELA PRINCIPAL">
          <content>
             <BorderPane prefHeight="200.0" prefWidth="200.0" />
          </content>
          <content>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
-               <top>
-                  <Label alignment="CENTER" prefHeight="78.0" prefWidth="601.0" text="SISTEMA DE CADASTRO ESCOLAR" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-               </top>
                <bottom>
                   <HBox prefHeight="100.0" prefWidth="358.0" BorderPane.alignment="CENTER">
                      <children>
@@ -36,17 +29,17 @@
                            <children>
                               <Label alignment="TOP_CENTER" prefHeight="32.0" prefWidth="259.0" text="Membros:">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
                               <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="32.0" prefWidth="257.0" text="Lucas Renu &amp;">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
                               <Label alignment="CENTER" layoutX="10.0" layoutY="42.0" prefHeight="32.0" prefWidth="259.0" text="Savio Rodrigues">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
                            </children>
@@ -55,7 +48,14 @@
                   </HBox>
                </bottom>
                <center>
-                  <VBox prefHeight="191.0" prefWidth="561.0" BorderPane.alignment="CENTER" />
+                  <VBox alignment="CENTER" prefHeight="191.0" prefWidth="561.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="CADASTRO DE PROFESSORES">
+                           <font>
+                              <Font name="System Bold Italic" size="24.0" />
+                           </font>
+                        </Label>
+                     </children></VBox>
                </center>
             </BorderPane>
          </content>
@@ -150,7 +150,7 @@
             </AnchorPane>
         </content>
       </Tab>
-      <Tab id="delecao" text=" DELEÇÃO ">
+      <Tab id="delecao" text="EXCLUSÃO">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
