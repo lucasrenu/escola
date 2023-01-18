@@ -75,7 +75,7 @@ public class BaseController implements Initializable{
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("CAMPOS INVÁLIDOS");
                 alert.setHeaderText("Não foi possível efetuar o cadastro!");
-                alert.setContentText("Certifique-se de que todos os campos estão preenchidos.");
+                alert.setContentText("Certifique-se de que todos os campos estão preenchidos");
                 alert.show();
             }
         } else {
