@@ -9,3 +9,4 @@ create table professor(
     especializacao VARCHAR(20) NOT NULL,
     PRIMARY KEY(id)
 );
+INSERT INTO professor(cpf, nome, salario, titulacao, especializacao) VALUES("01928374651", "Nananin Nananan", 3000.00, "Bacharel", "Física");
