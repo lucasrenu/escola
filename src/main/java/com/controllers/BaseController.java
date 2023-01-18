@@ -81,24 +81,32 @@ public class BaseController implements Initializable{
     @FXML
     void cadastrar() {
         Professor prof = new Professor();
-        if(txCpf.getText() != null && !txCpf.getText().trim().isEmpty() &&  txEspecializacao.getText() != null && !txEspecializacao.getText().trim().isEmpty() && txNome.getText() != null && !txNome.getText().trim().isEmpty() && txSalario.getText() != null && !txSalario.getText().trim().isEmpty() && txTitulacao.getText() != null && !txTitulacao.getText().trim().isEmpty()){
-            prof.setCpf(txCpf.getText());
-            prof.setEspecializacao(txEspecializacao.getText());
-            prof.setNome(txNome.getText());
-            prof.setSalario(Double.parseDouble(txSalario.getText()));
-            prof.setTitulacao(txTitulacao.getText());
-            txCpf.setText("");
-            txEspecializacao.setText("");
-            txNome.setText("");
-            txTitulacao.setText("");
-            txSalario.setText("");
-            dao.insert(prof);
-            initialize(null, null);
+        if(dao.selectByCPF(txCpf.getText()) == null){
+            if(txCpf.getText() != null && !txCpf.getText().trim().isEmpty() &&  txEspecializacao.getText() != null && !txEspecializacao.getText().trim().isEmpty() && txNome.getText() != null && !txNome.getText().trim().isEmpty() && txSalario.getText() != null && !txSalario.getText().trim().isEmpty() && txTitulacao.getText() != null && !txTitulacao.getText().trim().isEmpty()){
+                prof.setCpf(txCpf.getText());
+                prof.setEspecializacao(txEspecializacao.getText());
+                prof.setNome(txNome.getText());
+                prof.setSalario(Double.parseDouble(txSalario.getText()));
+                prof.setTitulacao(txTitulacao.getText());
+                txCpf.setText("");
+                txEspecializacao.setText("");
+                txNome.setText("");
+                txTitulacao.setText("");
+                txSalario.setText("");
+                dao.insert(prof);
+                initialize(null, null);
+            } else {
+                alert = new Alert(AlertType.ERROR);
+                alert.setTitle("CAMPOS INVÁLIDOS");
+                alert.setHeaderText("Não foi possível efetuar o cadastro!");
+                alert.setContentText("Certifique-se de que todos os campos estão preenchidos.");
+                alert.show();
+            }
         } else {
             alert = new Alert(AlertType.ERROR);
-            alert.setTitle("CAMPOS INVÁLIDOS");
+            alert.setTitle("CPF já cadastrado");
             alert.setHeaderText("Não foi possível efetuar o cadastro!");
-            alert.setContentText("Certifique-se de que todos os campos estão preenchidos.");
+            alert.setContentText("O CPF informado já está cadastrado na base de dados!");
             alert.show();
         }
     }

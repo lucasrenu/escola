@@ -54,6 +54,7 @@ public class CadastroController extends BaseController implements Initializable{
             prof.setSalario(Double.parseDouble(txSalario.getText()));
             prof.setTitulacao(txTitulacao.getText());
         }
+        
         // !nome.trim().isEmpty()
         txCpf.setText("");
         txEspecializacao.setText("");
