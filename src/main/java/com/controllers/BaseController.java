@@ -181,29 +181,28 @@ public class BaseController implements Initializable{
     @FXML
     void deletar() {
         ProfessorDAO dao = new ProfessorDAO();
+        Professor prof;
         int id = 0;
         try {
             id = Integer.parseInt(cpfProfessor.getText());
-        } catch (NumberFormatException e) {
+            alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("DELEÇÃO!");
+            alert.setHeaderText("Deseja realmente deletar o professor? ");
+            alert.setContentText("Todos os dados serão apagados sem opção de recuperação.");
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.OK){
+                prof = dao.select(id);
+                boolean deu = dao.delete(prof);
+                if(!deu){
+                    throw new RuntimeException("Usuário inexistente no banco de dados!");
+                }
+            }
+        } catch (RuntimeException e) {
             alert = new Alert(AlertType.ERROR);
             alert.setTitle("ID INVÁLIDO!");
             alert.setHeaderText("ID não corresponde a um professor!");
             alert.setContentText("Certifique-se de que o ID informado encontra-se cadastrado no sistema e que o campo esteja corretamente preenchido.");
             alert.show();
-        }
-        alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("DELEÇÃO!");
-        alert.setHeaderText("Deseja realmente deletar o professor? ");
-        alert.setContentText("Todos os dados serão apagados sem opção de recuperação.");
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == ButtonType.OK){
-            if(!dao.delete(id)){
-                alert = new Alert(AlertType.ERROR);
-                alert.setTitle("ID INVÁLIDO!");
-                alert.setHeaderText("ID não corresponde a um professor!");
-                alert.setContentText("Certifique-se de que o ID informado encontra-se cadastrado no sistema e que o campo esteja corretamente preenchido.");
-                alert.show();
-            }
         }
         reList();
     }

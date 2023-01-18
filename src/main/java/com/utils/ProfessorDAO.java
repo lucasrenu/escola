@@ -21,7 +21,6 @@ public class ProfessorDAO implements GenericDAO<Professor>{
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             conexao = DriverManager.getConnection(URL, USER, PASSWORD);
-            // return conexao;
         } catch(ClassNotFoundException | SQLException e){
             System.out.println("Não foi possível estabelecer a conexão!");
         }
@@ -60,7 +59,6 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             psm.setString(1, cpf);
             return criarProfessor(psm.executeQuery());
         } catch(Exception e) {
-            // e.printStackTrace();
             System.out.println("Erro, usuário não encontrado.");
         }
         return null;
@@ -78,7 +76,6 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             }
         } catch (Exception e) {
             System.out.println("Erro ao selecionar lista de professores");
-            // e.printStackTrace();
         }
         return null;
     }
@@ -96,7 +93,6 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             }
         } catch (Exception e) {
             System.out.println("Erro ao selecionar lista de professores");
-            // e.printStackTrace();
         }
         return null;
     }
@@ -134,7 +130,6 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             }
         } catch(Exception e) {
             System.out.println("Erro, usuário não encontrado.");
-            // e.printStackTrace();
         }
         return false;
     }
@@ -153,7 +148,6 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             }
         } catch (SQLException e) {
             System.out.println("Erro ao tentar deletar professor!");
-            // e.printStackTrace();
         }
         return false;
     }
@@ -161,6 +155,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
     @Override
     public boolean delete(int id) {
         String sql = "DELETE FROM professor WHERE id = ?";
+        boolean ok = false;
         try (Connection con = getConexao()){
             if(con != null){
                 PreparedStatement ps = con.prepareStatement(sql);
@@ -168,9 +163,9 @@ public class ProfessorDAO implements GenericDAO<Professor>{
                 return ps.execute();
             }
         } catch (SQLException e) {
-           System.out.println("Erro, impossível deletar usuário, ID não encontrado!");
+            e.printStackTrace();
         }
-        return false;
+        return ok;
     }
 
     private List<Professor> gerarLista(ResultSet rs){
@@ -206,7 +201,6 @@ public class ProfessorDAO implements GenericDAO<Professor>{
             return prof;
         } catch(SQLException e){
             System.out.println("Erro ao gerrar lista de professores; ProfessorDAO.criarProfessor");
-            // e.printStackTrace();
         }
         return null;
     }
