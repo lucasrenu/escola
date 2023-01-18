@@ -154,9 +154,9 @@ public class BaseController implements Initializable{
                 txtEspecializacao.setText(prof.getEspecializacao());
                 enableDesable(false);
             } else {
-
+                throw new RuntimeException("Professor não existe na base de dados!");
             }
-        } catch (NumberFormatException n){
+        } catch (RuntimeException n){
             alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("ID INVÁLIDO!");
             alert.setHeaderText("Não foi possível Encontrar professor com ID informado!");
@@ -207,7 +207,7 @@ public class BaseController implements Initializable{
         reList();
     }
 
-    @FXML
+    @FXML //
     void reList(){
         initialize(null, null);
     }
@@ -215,7 +215,7 @@ public class BaseController implements Initializable{
     @FXML
     private TabPane tbPane;
 
-    // TELA DE LISTAGEM
+    // TELA DE LISTAGEM - PESQUISA
     @FXML
     private TextField txCpfprofessor;
 
@@ -239,7 +239,6 @@ public class BaseController implements Initializable{
 
     @FXML
     private TableColumn<Professor, String> colTitulacao;
-
 
 
     // TELA PESQUISA
@@ -277,10 +276,8 @@ public class BaseController implements Initializable{
 
     @FXML
     void pesquisarPorCpf() {
-        ProfessorDAO prf = new ProfessorDAO();
-        // TODO: Válidando entrada de dados, tela de pesquisa por cpf;
-        Professor prof = prf.selectByCPF(txCpfprofessor.getText());
-
+        ProfessorDAO dao = new ProfessorDAO();
+        Professor prof = dao.selectByCPF(txCpfprofessor.getText());
         if ( prof != null ){
             hbDados.setVisible(true);
             lblCpf.setText(prof.getCpf());
@@ -290,6 +287,12 @@ public class BaseController implements Initializable{
             lblTitulacao.setText(prof.getTitulacao());
             lblEspecializacao.setText(prof.getEspecializacao());
             txCpfprofessor.setText("");
+        } else {
+            alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Professor não encontrado!");
+            // alert.setHeaderText(null);
+            alert.setContentText("Professor com o CPF informado não encontra-se cadastrado nesta base de dados!");
+            alert.show();
         }
     }
 

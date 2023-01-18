@@ -155,7 +155,6 @@ public class ProfessorDAO implements GenericDAO<Professor>{
     @Override
     public boolean delete(int id) {
         String sql = "DELETE FROM professor WHERE id = ?";
-        boolean ok = false;
         try (Connection con = getConexao()){
             if(con != null){
                 PreparedStatement ps = con.prepareStatement(sql);
@@ -165,7 +164,7 @@ public class ProfessorDAO implements GenericDAO<Professor>{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ok;
+        return false;
     }
 
     private List<Professor> gerarLista(ResultSet rs){
