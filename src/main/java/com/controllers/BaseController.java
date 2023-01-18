@@ -154,9 +154,9 @@ public class BaseController implements Initializable{
                 txtEspecializacao.setText(prof.getEspecializacao());
                 enableDesable(false);
             } else {
-
+                throw new RuntimeException("Professor não existe na base de dados!");
             }
-        } catch (NumberFormatException n){
+        } catch (RuntimeException n){
             alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("ID INVÁLIDO!");
             alert.setHeaderText("Não foi possível Encontrar professor com ID informado!");
@@ -181,34 +181,33 @@ public class BaseController implements Initializable{
     @FXML
     void deletar() {
         ProfessorDAO dao = new ProfessorDAO();
+        Professor prof;
         int id = 0;
         try {
             id = Integer.parseInt(cpfProfessor.getText());
-        } catch (NumberFormatException e) {
+            alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("DELEÇÃO!");
+            alert.setHeaderText("Deseja realmente deletar o professor? ");
+            alert.setContentText("Todos os dados serão apagados sem opção de recuperação.");
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.OK){
+                prof = dao.select(id);
+                boolean deu = dao.delete(prof);
+                if(!deu){
+                    throw new RuntimeException("Usuário inexistente no banco de dados!");
+                }
+            }
+        } catch (RuntimeException e) {
             alert = new Alert(AlertType.ERROR);
             alert.setTitle("ID INVÁLIDO!");
             alert.setHeaderText("ID não corresponde a um professor!");
             alert.setContentText("Certifique-se de que o ID informado encontra-se cadastrado no sistema e que o campo esteja corretamente preenchido.");
             alert.show();
         }
-        alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("DELEÇÃO!");
-        alert.setHeaderText("Deseja realmente deletar o professor? ");
-        alert.setContentText("Todos os dados serão apagados sem opção de recuperação.");
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == ButtonType.OK){
-            if(!dao.delete(id)){
-                alert = new Alert(AlertType.ERROR);
-                alert.setTitle("ID INVÁLIDO!");
-                alert.setHeaderText("ID não corresponde a um professor!");
-                alert.setContentText("Certifique-se de que o ID informado encontra-se cadastrado no sistema e que o campo esteja corretamente preenchido.");
-                alert.show();
-            }
-        }
         reList();
     }
 
-    @FXML
+    @FXML //
     void reList(){
         initialize(null, null);
     }
@@ -216,7 +215,7 @@ public class BaseController implements Initializable{
     @FXML
     private TabPane tbPane;
 
-    // TELA DE LISTAGEM
+    // TELA DE LISTAGEM - PESQUISA
     @FXML
     private TextField txCpfprofessor;
 
@@ -240,7 +239,6 @@ public class BaseController implements Initializable{
 
     @FXML
     private TableColumn<Professor, String> colTitulacao;
-
 
 
     // TELA PESQUISA
@@ -278,10 +276,8 @@ public class BaseController implements Initializable{
 
     @FXML
     void pesquisarPorCpf() {
-        ProfessorDAO prf = new ProfessorDAO();
-        // TODO: Válidando entrada de dados, tela de pesquisa por cpf;
-        Professor prof = prf.selectByCPF(txCpfprofessor.getText());
-
+        ProfessorDAO dao = new ProfessorDAO();
+        Professor prof = dao.selectByCPF(txCpfprofessor.getText());
         if ( prof != null ){
             hbDados.setVisible(true);
             lblCpf.setText(prof.getCpf());
@@ -291,6 +287,12 @@ public class BaseController implements Initializable{
             lblTitulacao.setText(prof.getTitulacao());
             lblEspecializacao.setText(prof.getEspecializacao());
             txCpfprofessor.setText("");
+        } else {
+            alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Professor não encontrado!");
+            // alert.setHeaderText(null);
+            alert.setContentText("Professor com o CPF informado não encontra-se cadastrado nesta base de dados!");
+            alert.show();
         }
     }
 
