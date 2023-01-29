@@ -1,7 +1,7 @@
 package com.classes;
 
 public class Pessoa {
-    private int id;
+    private Integer id;
     private String cpf;
     private String nome;
 

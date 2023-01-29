@@ -2,7 +2,7 @@ package com.classes;
 
 public class Professor extends Pessoa{
 
-    private double salario;
+    private Double salario;
     private String titulacao;
     private String especializacao;
 

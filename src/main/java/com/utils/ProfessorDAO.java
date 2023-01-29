@@ -15,8 +15,8 @@ public class ProfessorDAO implements GenericDAO<Professor>{
     public Connection getConexao() {
         Connection conexao = null;
         String URL = "jdbc:mariadb://localhost:3306/escola";
-        String USER = "local";
-        String PASSWORD = "toor";
+        String USER = "toor";
+        String PASSWORD = "1234";
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
